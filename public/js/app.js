@@ -10,17 +10,15 @@ weatherForm.addEventListener("submit", e => {
 
   messageOne.textContent = "loading...";
   messageTwo.textContent = "";
-  fetch("http://localhost:8080/weather?address=" + search.value).then(
-    response => {
-      response.json().then(data => {
-        if (data.error) {
-          messageOne.textContent = data.error;
-        } else {
-          messageOne.textContent = data.location;
-          messageTwo.textContent =
-            "temperature: " + data.temperature + " celsisus";
-        }
-      });
-    }
-  );
+  fetch("/weather?address=" + search.value).then(response => {
+    response.json().then(data => {
+      if (data.error) {
+        messageOne.textContent = data.error;
+      } else {
+        messageOne.textContent = data.location;
+        messageTwo.textContent =
+          "temperature: " + data.temperature + " celsisus";
+      }
+    });
+  });
 });

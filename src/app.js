@@ -5,6 +5,7 @@ const geocode = require("./utils/geocode");
 const forecast = require("./utils/forecast");
 
 const app = express();
+const port = process.env.PORT || 8080;
 
 //setting the path
 const htmlPathDirec = path.join(__dirname, "../public");
@@ -88,6 +89,6 @@ app.get("*", (request, response) => {
   });
 });
 
-app.listen("8080", () => {
+app.listen(port, () => {
   console.log("App started");
 });
